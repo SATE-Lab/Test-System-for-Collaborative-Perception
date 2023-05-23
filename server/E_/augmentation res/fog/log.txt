@@ -1,0 +1,7 @@
+/home/chenwei/test_pcl/extract_intensity_data/car1/006220++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006220++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006222++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006224++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006220++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006222++.txt 600 20
+/home/chenwei/test_pcl/extract_intensity_data/car1/006224++.txt 600 20

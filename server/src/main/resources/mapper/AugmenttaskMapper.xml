@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nineya.springboot.mapper.AugmenttaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.nineya.springboot.entity.Augmenttask">
+        <id column="ID" property="id" />
+        <result column="originSetId" property="originsetid" />
+        <result column="augSetId" property="augsetid" />
+        <result column="weatherType" property="weathertype" />
+        <result column="weatherIntensity" property="weatherintensity" />
+        <result column="parameter" property="parameter" />
+        <result column="beginTime" property="begintime" />
+        <result column="status" property="status" />
+        <result column="taskname" property="taskname" />
+        <result column="road" property="road" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        originSetId, augSetId, weatherType, weatherIntensity, parameter, beginTime, status, taskname, ID, road
+    </sql>
+
+</mapper>

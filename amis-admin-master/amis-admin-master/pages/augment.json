@@ -1,0 +1,154 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "crud",
+      "draggable": true,
+      "id": "form_data",
+      "interval": 5000,
+      "api": "POST:http://127.0.0.1:8080/augmenttask/getAll",
+      "syncLocation": false,
+      "columns": [
+        {
+          "name": "id",
+          "label": "ID"
+        },
+        {
+          "label": "任务名",
+          "name": "a",
+          "type": "text",
+          "id": "u:e21dbcfde2e0"
+        },
+        {
+          "type": "text",
+          "label": "建立时间",
+          "name": "b",
+          "id": "u:8e3efa9c35ad"
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "name": "c",
+          "id": "u:36e1ae40d0e8",
+          "buttons": [
+            {
+              "type": "button",
+              "label": "执行任务",
+              "actionType": "ajax",
+              "api": "POST:http://127.0.0.1:8080//testtask/create?id=${id}",
+              "id": "u:40815186a10e"
+            }
+          ]
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "name": "d",
+          "id": "u:b269163f9087",
+          "buttons": [
+            {
+              "label": "删除",
+              "type": "button",
+              "actionType": "ajax",
+              "level": "danger",
+              "confirmText": "确认要删除？",
+              "api": "POST:http://127.0.0.1:8080//augmenttask/deleteById?id=${id}"
+
+
+            }
+          ]
+        },
+        {
+          "type": "mapping",
+          "label": "状态",
+          "name": "e",
+          "id": "u:b269163f9099",
+          "map": {
+            "1": "<span class='label label-info'>就绪</span>",
+            "2": "<span class='label label-success'>已完成</span>",
+            "3": "<span class='label label-warning'>执行中</span>"
+          }
+        },
+        {
+          "type": "button",
+          "label": "任务详情",
+          "actionType": "dialog",
+          "dialog": {
+            "title": "详情查看",
+            "body": [
+              {
+                "type": "crud",
+                "api": "POST:http://127.0.0.1:8080/augmenttask/getById?id=$id&type=1",
+                "columns": [
+                  {
+                    "label": "任务名",
+                    "name": "a",
+                    "type": "text",
+                    "id": "u:e865d111df73"
+                  },
+                  {
+                    "type": "text",
+                    "label": "点云文件数",
+                    "name": "b",
+                    "id": "u:72ab94f5e491"
+                  },
+                  {
+                    "type": "text",
+                    "label": "建立时间",
+                    "name": "c",
+                    "id": "u:27289f9151e7"
+                  },
+                  {
+                    "type": "text",
+                    "label": "变异算子",
+                    "name": "d",
+                    "id": "u:30766e53b930"
+                  }
+                ],
+                "id": "u:e7157c5afc3c"
+              },
+              {
+                "type": "crud",
+                "api": "POST:http://127.0.0.1:8080/augmenttask/getById?id=$id&type=2",
+                "columns": [
+                  {
+                    "type": "text",
+                    "label": "天气强度",
+                    "name": "e"
+                  },
+                  {
+                    "type": "text",
+                    "label": "特有参数",
+                    "name": "n",
+                    "id": "u:efb494885322"
+                  },
+                  {
+                    "type": "text",
+                    "label": "参数自定义",
+                    "name": "z",
+                    "id": "u:47a8f2fe8521"
+                  },
+                  {
+                    "type": "text",
+                    "label": "场景",
+                    "name": "v",
+                    "id": "u:0375aa0295aa"
+                  }
+                ],
+                "id": "u:82e3b1ba11d4"
+              }
+            ]
+          },
+          "id": "u:c0794305b3b6"
+        }
+      ],
+      "id": "u:9a08e29ae9fc"
+    }
+  ],
+  "id": "u:b45d373abd1d",
+  "style": {},
+  "regions": [
+    "body",
+    "header"
+  ]
+}

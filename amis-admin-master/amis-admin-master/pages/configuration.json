@@ -1,0 +1,261 @@
+{
+  "type": "page",
+  "body": [
+    {
+
+
+        "type": "form",
+        "api": "post:http://127.0.0.1:8080//augmenttask/create?road=$select",
+        "body": [
+          {
+            "type": "panel",
+            "id": "u:b1664ae9e5a4",
+            "title": "变异算子选择",
+            "affixFooter": false,
+            "actions": [
+            ],
+            "hidden": false,
+            "body": [
+              {
+                "type": "tabs",
+                "tabs": [
+                  {
+                    "title": "随机",
+                    "body": [
+                      {
+                        "type": "tabs",
+                        "tabs": [
+                          {
+                            "title": "天气",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "weather_random_select",
+                                "label": "",
+                                "clearable": true,
+                                "options": [
+                                  {
+                                    "label": "雨",
+                                    "value": 0
+                                  },
+                                  {
+                                    "label": "雪",
+                                    "value": 1
+                                  },
+                                  {
+                                    "label": "雾",
+                                    "value": 2
+                                  }
+                                ],
+                                "multiple": false
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "自定义配置",
+                    "id": "u:f97333f5ccae",
+                    "body": [
+                      {
+                        "type": "tabs",
+                        "tabs": [
+                          {
+                            "title": "天气",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "weather_custom_select2",
+                                "label": "",
+                                "clearable": true,
+                                "options": [
+                                  {
+                                    "label": "雨",
+                                    "value": 0
+                                  },
+                                  {
+                                    "label": "雪",
+                                    "value": 1
+                                  },
+                                  {
+                                    "label": "雾",
+                                    "value": 2
+                                  }
+                                ],
+                                "multiple": false
+                              }
+                            ]
+                          },
+                          {
+                            "title": "参数",
+                            "body": [
+                              {
+                                "type": "input-text",
+                                "name": "intensity",
+                                "label": "天气强度W"
+                              },
+                              {
+                                "type": "input-text",
+                                "name": "para",
+                                "label": "干扰参数"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "toolbar": [
+                ]
+              }
+            ]
+          },
+          {
+            "type": "panel",
+            "title": "扩增点云文件",
+            "body": [
+              {
+                "type": "select",
+                "id": "u:d47edfe19c2b",
+                "label": "场景选择",
+                "name": "select",
+                "options": [
+                  {
+                    "label": "双车场景一",
+                    "value": 0
+                  },
+                  {
+                    "label": "双车场景二",
+                    "value": 1
+                  },
+                  {
+                    "label": "三车场景一",
+                    "value": 2
+                  },
+                  {
+                    "label": "三车场景二",
+                    "value": 3
+                  }
+                ],
+                "multiple": false,
+                "value": 0
+              },
+              {
+
+                "type": "tabs",
+                "tabs": [
+                  {
+                    "title": "双车",
+                    "body": [
+                      {
+                        "type": "tabs",
+                        "tabs": [
+                          {
+                            "title": "car1",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "towcar_car1",
+                                "label": "",
+                                "clearable": true,
+                                "source": "post:http://127.0.0.1:8080/pointcloud/getcar?id=1&road=$select",
+                                "multiple": true
+                              }
+                            ]
+                          },
+                          {
+                            "title": "car2",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "towcar_car2",
+                                "label": "",
+                                "clearable": true,
+                                "source": "post:http://127.0.0.1:8080/pointcloud/getcar?id=2&road=$select",
+                                "multiple": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "三车",
+                    "id": "u:b352eafb0951",
+                    "body": [
+                      {
+                        "type": "tabs",
+                        "tabs": [
+                          {
+                            "title": "car1",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "threecar_car1",
+                                "label": "",
+                                "multiple": true,
+                                "clearable": true,
+                                "source": "post:http://127.0.0.1:8080/pointcloud/getcar?id=3&road=$select"
+
+                              }
+                            ],
+                            "id": "u:b23f5d30ab6e"
+                          },
+                          {
+                            "title": "car2",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "threecar_car2",
+                                "label": "",
+                                "multiple": true,
+                                "clearable": true,
+                                "source": "post:http://127.0.0.1:8080/pointcloud/getcar?id=4&road=$select"
+
+                              }
+                            ],
+                            "id": "u:311b6651bdb4"
+                          },
+                          {
+                            "title": "car3",
+                            "body": [
+                              {
+                                "type": "list-select",
+                                "name": "threecar_car3",
+                                "label": "",
+                                "multiple": true,
+                                "clearable": true,
+                                "source": "post:http://127.0.0.1:8080/pointcloud/getcar?id=5&road=$select"
+
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "toolbar": [
+                ]
+              }
+            ],
+            "affixFooter": false,
+            "actions": [
+            ],
+            "hidden": false
+          },
+          {
+            "type": "input-text",
+            "name": "taskname",
+            "label": "扩增任务名称"
+          }
+        ],
+        "id": "u:24f2c6360ef0",
+        "title": "添加扩增任务"
+      }
+    ]
+}

@@ -1,0 +1,35 @@
+@Override
+public long addAugTask(ParaConfiguration paraConfiguration，long id) {
+    paraConfiguration.setDataSet(id);
+    //将配置方案存储到数据库中
+    try {
+        long taskid = AugTaskDao.insert(paraConfiguration);
+
+        if (taskid > 0) {
+            return taskid;
+        } else {
+            return -1;
+        }
+    }
+}
+
+@Override
+public long addDataSet(List<long> ids,int userid,int setType) {
+    DataSet dataSet=new DataSet();
+    dataSet.setUserId(userid);
+    dataSet.setFileCount(ids.size());
+    dataSet.setSetType(setType);
+    long setid =-1;
+    try {
+            setid = DataSetDao.insert(dataSet);
+    }
+    PointSetMap pointSetMap = new PointSetMap();
+    pointSetMap.setDataSetId(setid);
+    for(long id:ids){
+        pointSetMap.setPointCloudId(id);
+        try {
+            pointSetMapDao.insert(pointSetMap) ;
+         }
+    }
+    return setid;
+}

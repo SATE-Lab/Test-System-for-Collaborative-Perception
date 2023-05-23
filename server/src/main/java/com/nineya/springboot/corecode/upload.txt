@@ -1,0 +1,33 @@
+@Override
+public PointCloud createPointCloud(MultipartFile multipartFile) {
+    //根据文件初始化pointcloud
+    Pointcloud pointcloud=new Pointcloud();
+    pointcloud.setFiletype(0);
+    String fileName = multipartFile.getOriginalFilename();
+    pointcloud.setName(fileName);
+    pointcloud.setSize((int) multipartFile.getSize());
+    try {
+        //存储文件
+        File file = new File(fielDir);
+        in = multipartFile.getInputStream();
+        ByteArrayOutputStream bstream = new ByteArrayOutputStream();
+        Streams.copy(in, bstream, true);
+        fileout = new FileOutputStream(file);
+        bstream.writeTo(fileout);
+    }
+
+    //对文件进行格式转化
+    if(fileName.endsWith("txt")){
+        pcdConvertor.txt2pcd(fielDir);
+    }
+    //将点云信息存储到数据库中
+    try {
+        if (pointcloudDao.insert(pointcloud) > 0) {
+            return R.success("插入成功");
+        } else {
+            return R.error("插入失败");
+        }
+    } catch (DuplicateKeyException e) {
+        return R.fatal(e.getMessage());
+    }
+}

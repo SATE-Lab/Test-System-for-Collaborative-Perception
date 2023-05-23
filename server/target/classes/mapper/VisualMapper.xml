@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nineya.springboot.mapper.VisualMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.nineya.springboot.entity.Visual">
+        <id column="ID" property="id" />
+        <result column="address" property="address" />
+        <result column="type" property="type" />
+        <result column="augId" property="augid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, address, type, augId
+    </sql>
+
+</mapper>

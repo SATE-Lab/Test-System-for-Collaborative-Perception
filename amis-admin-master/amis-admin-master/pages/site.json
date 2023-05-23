@@ -1,0 +1,56 @@
+{
+  "status": 0,
+  "msg": "",
+  "data": {
+    "pages": [
+      {
+        "label": "Home",
+        "url": "/",
+        "redirect": "/index/1"
+      },
+      {
+        "label": "功能列表",
+        "children": [
+          {
+            "label": "点云文件上传",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/upload.json"
+
+          },
+          {
+            "label": "添加扩增任务",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/configuration.json"
+
+          },
+          {
+            "label": "数据扩增列表",
+            "url": "index",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/augment.json"
+          },
+          {
+            "label": "模型测试列表",
+            "url": "/crud",
+            "rewrite": "/crud/list",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/modeltest.json"
+
+          },
+          {
+            "label": "模型测试报告",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/show.json"
+
+          },
+          {
+            "label": "点云可视化",
+            "icon": "fa fa-cube",
+            "schemaApi": "get:/pages/visual.json"
+
+          }
+        ]
+      }
+    ]
+  }
+}

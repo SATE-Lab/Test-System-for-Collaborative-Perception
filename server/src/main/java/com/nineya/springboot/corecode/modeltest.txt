@@ -1,0 +1,35 @@
+@Override
+public void modelTask(TestTask testTask) {
+    //获取原始点云数据
+    int setId = testTask.getTestSetId();
+    List<PointCloud> pointClouds = PointSetMap.getByTaskId(setId);
+    //提取点云强度信息
+    for(PointCloud pointCloud:pointClouds){
+        IntensityExtraction(pointCloud.getAddress());
+    }
+    //启动测试线程
+    ModelTestThread modelTestThread = new ModelTestThread(pointClouds);
+    modelTestThread.start();
+}
+
+//测试结果监听处理函数，上层通过RabbitMQ异步监听服务端消息
+public void ProcessTestResult(List<PointCloud> errorPointClouds) {
+    //存储错误数据，数据集合，映射关系
+    DataSet dataset =new DataSet();
+    dataset.SetUserId=errorPointCloud.get(0).getUserId();
+    dataset.setId(null);
+    data.setType(2);
+    DataSet dataset =DataSetDao.getById(setId);
+    dataset.setId(null);
+    data.setType(2);
+    long augid = DataSetDao.insert(dataset);
+    List<Long> augPointId= new ArrayList<>();
+    PointSetMap pointSetMap = new PointSetMap();
+    pointSetMap.setDataSetId(augid);
+    for(PointCloud pointCloud:augPointClouds){
+            pointSetMap.setPointCloudId(saveAugPointCloud(errorPointClouds));
+            pointSetMapDao.insert(pointSetMap) ;
+    }
+    //生成测试报告
+    generator(errorPointCloud.get(0).getAddress());
+}

@@ -1,0 +1,66 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-5KA0Um
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_3e196/fast && /usr/bin/make  -f CMakeFiles/cmTC_3e196.dir/build.make CMakeFiles/cmTC_3e196.dir/build
+make[1]: 进入目录“/home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-5KA0Um”
+Building C object CMakeFiles/cmTC_3e196.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_3e196.dir/src.c.o -c /home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-5KA0Um/src.c
+Linking C executable cmTC_3e196
+/home/chenwei/anaconda3/envs/opencood/lib/python3.7/site-packages/cmake-3.25.0-py3.7-linux-x86_64.egg/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3e196.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_3e196.dir/src.c.o -o cmTC_3e196 
+CMakeFiles/cmTC_3e196.dir/src.c.o：在函数‘main’中：
+src.c:(.text+0x3e)：对‘pthread_create’未定义的引用
+src.c:(.text+0x4a)：对‘pthread_detach’未定义的引用
+src.c:(.text+0x56)：对‘pthread_cancel’未定义的引用
+src.c:(.text+0x67)：对‘pthread_join’未定义的引用
+src.c:(.text+0x7b)：对‘pthread_atfork’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3e196.dir/build.make:98: recipe for target 'cmTC_3e196' failed
+make[1]: *** [cmTC_3e196] Error 1
+make[1]: 离开目录“/home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-5KA0Um”
+Makefile:127: recipe for target 'cmTC_3e196/fast' failed
+make: *** [cmTC_3e196/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-XPLX8y
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_94099/fast && /usr/bin/make  -f CMakeFiles/cmTC_94099.dir/build.make CMakeFiles/cmTC_94099.dir/build
+make[1]: 进入目录“/home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-XPLX8y”
+Building C object CMakeFiles/cmTC_94099.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_94099.dir/CheckFunctionExists.c.o -c /home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-XPLX8y/CheckFunctionExists.c
+Linking C executable cmTC_94099
+/home/chenwei/anaconda3/envs/opencood/lib/python3.7/site-packages/cmake-3.25.0-py3.7-linux-x86_64.egg/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94099.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_94099.dir/CheckFunctionExists.c.o -o cmTC_94099  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_94099.dir/build.make:98: recipe for target 'cmTC_94099' failed
+make[1]: *** [cmTC_94099] Error 1
+make[1]: 离开目录“/home/chenwei/test_pcl/build/CMakeFiles/CMakeScratch/TryCompile-XPLX8y”
+Makefile:127: recipe for target 'cmTC_94099/fast' failed
+make: *** [cmTC_94099/fast] Error 2
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nineya.springboot.mapper.PointcloudMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.nineya.springboot.entity.Pointcloud">
+        <result column="name" property="name" />
+        <result column="size" property="size" />
+        <result column="fileType" property="filetype" />
+        <result column="address" property="address" />
+        <result column="uploadTime" property="uploadtime" />
+        <result column="sence" property="sence" />
+        <result column="car" property="car" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        name, size, fileType, address, uploadTime, sence, car
+    </sql>
+
+</mapper>

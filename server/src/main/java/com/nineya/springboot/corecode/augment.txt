@@ -1,0 +1,30 @@
+@Override
+public void augmentTask(int taskId) {
+    //获取原始点云数据
+    AugTask augTask=new AugTask();
+    augTask = AugTaskDao.getById(taskId);
+    int setId = augTask.getOrginSetId();
+    List<PointCloud> pointClouds = PointSetMap.getByTaskId(setId);
+    //提取点云强度信息
+    for(PointCloud pointCloud:pointClouds){
+        IntensityExtraction(pointCloud.getAddress());
+    }
+    //启动扩增线程
+    AugThread augThread = new AugThread(mDoneSignal,pointClouds,augTask.getConfiguration());
+    augThread.start();
+    //等待扩增线程结束并获取线程返回值
+    mDoneSignal.await();
+    List<PointCloud> augPointClouds = augThread.getReturnValue();
+    //存储变异数据，数据集合，映射关系
+    DataSet dataset =DataSetDao.getById(setId);
+    dataset.setId(null);
+    data.setType(1);
+    long augid = DataSetDao.insert(dataset);
+    List<Long> augPointId= new ArrayList<>();
+    PointSetMap pointSetMap = new PointSetMap();
+    pointSetMap.setDataSetId(augid);
+    for(PointCloud pointCloud:augPointClouds){
+            pointSetMap.setPointCloudId(saveAugPointCloud(pointCloud));
+            pointSetMapDao.insert(pointSetMap) ;
+    }
+}

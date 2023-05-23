@@ -1,0 +1,229 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "panel",
+      "id": "u:60c188f9db32",
+      "title": "上传点云文件",
+      "affixFooter": false,
+      "actions": [
+      ],
+      "hidden": false,
+      "body": [
+        {
+          "type": "select",
+          "label": "场景选择",
+          "name": "select",
+          "options": [
+            {
+              "label": "双车场景一",
+              "value": "A"
+            },
+            {
+              "label": "双车场景二",
+              "value": "B"
+            },
+            {
+              "label": "三车场景一",
+              "value": "C"
+            },
+            {
+              "label": "三车场景二",
+              "value": "D"
+            }
+          ],
+          "id": "u:d47edfe19c2b",
+          "multiple": false,
+          "value": "A"
+        },
+        {
+          "type": "tabs",
+          "tabs": [
+            {
+              "title": "双车",
+              "body": [
+                {
+                  "type": "tabs",
+                  "tabs": [
+                    {
+                      "title": "car1",
+                      "body": [
+                        {
+                          "type": "input-file",
+                          "label": "文件上传",
+                          "autoUpload": true,
+                          "proxy": true,
+                          "uploadType": "fileReceptor",
+                          "fileField": "file",
+                          "accept": ".txt,.bin,.pcd",
+                          "multiple": true,
+                          "receiver": {
+                            "url": "http://127.0.0.1:8080/pointcloud/upload?id=1&road=$select",
+                            "method": "post"
+                          },
+                          "id": "u:8b109fec14e3"
+                        }
+                      ],
+                      "id": "u:c93dd596e1c3"
+                    },
+                    {
+                      "title": "car2",
+                      "body": [
+                        {
+                          "type": "input-file",
+                          "label": "文件上传",
+                          "autoUpload": true,
+                          "proxy": true,
+                          "uploadType": "fileReceptor",
+                          "fileField": "file",
+                          "accept": ".txt,.bin,.pcd",
+                          "multiple": true,
+                          "receiver": {
+                            "url": "http://127.0.0.1:8080/pointcloud/upload?id=2&road=$select",
+                            "method": "post"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "u:a6a045dfdf12"
+                }
+              ],
+              "id": "u:f96844ba6526"
+            },
+            {
+              "title": "三车",
+              "id": "u:bc3a929680f4",
+              "body": [
+                {
+                  "type": "tabs",
+                  "tabs": [
+                    {
+                      "title": "car1",
+                      "body": [
+                        {
+                          "type": "input-file",
+                          "label": "文件上传",
+                          "autoUpload": true,
+                          "proxy": true,
+                          "uploadType": "fileReceptor",
+                          "fileField": "file",
+                          "accept": ".txt,.bin,.pcd",
+                          "multiple": true,
+                          "receiver": {
+                            "url": "http://127.0.0.1:8080/pointcloud/upload?id=3&road=$select",
+                            "method": "post"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "title": "car2",
+                      "body": [
+                        {
+                          "type": "input-file",
+                          "label": "文件上传",
+                          "autoUpload": true,
+                          "proxy": true,
+                          "uploadType": "fileReceptor",
+                          "fileField": "file",
+                          "accept": ".txt,.bin,.pcd",
+                          "multiple": true,
+                          "receiver": {
+                            "url": "http://127.0.0.1:8080/pointcloud/upload?id=4&road=$select",
+                            "method": "post"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "title": "car3",
+                      "body": [
+                        {
+                          "type": "input-file",
+                          "label": "文件上传",
+                          "autoUpload": true,
+                          "proxy": true,
+                          "uploadType": "fileReceptor",
+                          "fileField": "file",
+                          "accept": ".txt,.bin,.pcd",
+                          "multiple": true,
+                          "receiver": {
+                            "url": "http://127.0.0.1:8080/pointcloud/upload?id=5&road=$select",
+                            "method": "post"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "u:a6a045dfdf12"
+                }
+              ]
+            }
+          ],
+          "id": "u:64a87f878854",
+          "toolbar": [
+          ]
+        }
+      ]
+    },
+    {
+      "type": "flex",
+      "className": "p-1",
+      "items": [
+      ],
+      "style": {
+        "position": "static"
+      },
+      "direction": "row",
+      "justify": "flex-start",
+      "alignItems": "stretch",
+      "id": "u:b9a860a52e14"
+    },
+    {
+      "type": "flex",
+      "className": "p-1",
+      "items": [
+      ],
+      "direction": "column",
+      "justify": "center",
+      "alignItems": "stretch",
+      "id": "u:0a0890900035"
+    }
+  ],
+  "id": "u:98b906f4cfe3",
+  "style": {
+    "fontFamily": "Times New Roman",
+    "fontSize": 12,
+    "boxShadow": " 0px 0px 0px 0px transparent"
+  },
+  "regions": [
+    "body",
+    "header"
+  ],
+  "aside": [
+    {
+      "type": "nav",
+      "stacked": true,
+      "links": [
+        {
+          "label": "添加扩增任务",
+          "to": "?id=1"
+        },
+        {
+          "label": "扩增任务列表",
+          "to": "?id=2"
+        }
+      ],
+      "id": "u:b2971b734fd7",
+      "className": "b-dark"
+    }
+  ],
+  "title": "点云文件上传",
+  "toolbar": [
+  ],
+  "pullRefresh": {
+    "disabled": true
+  },
+  "asideResizor": false
+}

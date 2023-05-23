@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nineya.springboot.mapper.ReportMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.nineya.springboot.entity.Report">
+        <id column="ID" property="id" />
+        <result column="name" property="name" />
+        <result column="image" property="image" />
+        <result column="alarm" property="alarm" />
+        <result column="miss" property="miss" />
+        <result column="yaw" property="yaw" />
+        <result column="bev" property="bev" />
+        <result column="augId" property="augid" />
+        <result column="testId" property="testid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, name, image, alarm, miss, yaw, bev, augId, testId
+    </sql>
+
+</mapper>

@@ -1,0 +1,12 @@
+/home/chenwei/test_pcl/extract_intensity_data/car1/002751++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/002753++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/002755++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/002751++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/002753++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/002755++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006220++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006222++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006224++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006220++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006222++.txt 0.25 10
+/home/chenwei/test_pcl/extract_intensity_data/car1/006224++.txt 0.25 10

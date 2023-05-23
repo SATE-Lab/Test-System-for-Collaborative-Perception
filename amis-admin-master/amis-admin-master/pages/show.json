@@ -1,0 +1,342 @@
+{
+  "type": "collapse",
+  "body": [
+    {
+      "type": "select",
+      "label": "测试报告",
+      "name": "select",
+      "source": "post:http://127.0.0.1:8080/report/getAll",
+      "id": "u:825e45f8ec45",
+      "onEvent": {
+        "change": {
+          "actions": [
+            {
+              "actionType": "reload",
+              "componentId": "errimg"
+            },
+            {
+              "actionType": "reload",
+              "componentId": "table1"
+            },
+            {
+              "actionType": "reload",
+              "componentId": "chart1"
+            },
+            {
+              "actionType": "reload",
+              "componentId": "chart2"
+            },
+            {
+              "actionType": "reload",
+              "componentId": "table2"
+            },
+            {
+              "actionType": "reload",
+              "componentId": "download"
+            }
+          ]
+        }
+      },
+      "multiple": false
+    },
+    {
+      "type": "collapse",
+      "id": "u:75e85791e93b",
+      "body": [
+        {
+          "type": "page",
+          "body":
+            {
+              "type": "page",
+              "name": "errimg",
+              "body": {
+                "type": "service",
+                "id": "errimg",
+
+                "api": "post:http://127.0.0.1:8080/report/getImageById?id=$select",
+                "body": {
+                  "type": "images",
+                  "name": "imageList",
+                  "auto": false,
+                  "thumbMode": "cover",
+                  "animation": "slide",
+                  "height": 400,
+                  "enlargeAble": true,
+                  "showToolbar": true
+                }
+              }
+            }
+        },
+        {
+          "type": "service",
+          "id": "table2",
+          "api": "POST:http://127.0.0.1:8080/report/getGrade?id=$select&type=3",
+          "body": [
+            {
+              "type": "table",
+              "source": "$rows1",
+              "columns": [
+                {
+                  "type": "text",
+                  "label": "实际车辆数",
+                  "name": "f"
+                },
+                {
+                  "type": "text",
+                  "label": "检测车辆数",
+                  "name": "g"
+                },
+                {
+                  "type": "text",
+                  "label": "匹配车辆数",
+                  "name": "m"
+                },
+                {
+                  "type": "text",
+                  "label": "虚检车辆数",
+                  "name": "h"
+                },
+                {
+                  "type": "text",
+                  "label": "漏检车辆数",
+                  "name": "i"
+                },
+                {
+                  "type": "text",
+                  "label": "姿态不匹配车辆数",
+                  "name": "j"
+                },
+                {
+                  "type": "text",
+                  "label": "bev",
+                  "name": "k"
+                }
+              ],
+              "id": "u:3d7573274ad2"
+            }
+          ]
+        }
+      ],
+      "header": "可视化展示"
+    },
+    {
+      "type": "collapse",
+      "id": "u:75e85791e93b",
+      "header": "图表展示",
+      "body": [
+        {
+          "type": "flex",
+          "className": "p-1",
+          "items": [
+            {
+              "type": "container",
+              "body": [
+                {
+                  "type": "markdown",
+                  "value": "# 评估指标",
+                  "id": "u:e573e7e3c3c4"
+                },
+                {
+
+                  "type": "service",
+                  "id": "table1",
+                  "api": "POST:http://127.0.0.1:8080/report/getGrade?id=$select&type=0",
+                  "body": [
+                    {
+                      "type": "table",
+                      "source": "$rows1",
+                      "columns": [
+                        {
+                          "label": "数据",
+                          "name": "e",
+                          "type": "text",
+                          "id": "u:a4b857195548"
+                        },
+                        {
+                          "type": "text",
+                          "label": "false alarm",
+                          "name": "f",
+                          "id": "u:2c139b97b4be"
+                        },
+                        {
+                          "type": "text",
+                          "label": "miss rate",
+                          "name": "g",
+                          "id": "u:b07b7c34e6d1"
+                        },
+                        {
+                          "type": "text",
+                          "label": "yaw accuracy",
+                          "name": "h",
+                          "id": "u:6bc9ef1b51f4"
+                        },
+                        {
+                          "type": "text",
+                          "label": "bev AP",
+                          "name": "i",
+                          "id": "u:6bc9ef1b51f4"
+                        }
+                      ],
+                      "id": "u:3d7573274ad2"
+                    }
+                  ]
+                }
+              ],
+              "id": "u:f3ef4741dbd0",
+              "size": "xs",
+              "style": {
+                "position": "static",
+                "display": "block",
+                "flex": "1 1 auto",
+                "flexGrow": 1,
+                "flexBasis": "auto",
+                "marginTop": "0",
+                "paddingTop": "0"
+              },
+              "wrapperBody": false,
+              "isFixedHeight": false,
+              "isFixedWidth": false
+            }
+          ],
+          "style": {
+            "position": "static"
+          },
+          "direction": "row",
+          "justify": "flex-start",
+          "alignItems": "stretch",
+          "id": "u:3792fa3b4a07"
+        },
+        {
+          "type": "flex",
+          "className": "p-1",
+          "items": [
+            {
+              "type": "service",
+              "id": "chart1",
+              "body": [
+                {
+                  "type": "chart",
+                  "api": "POST:http://127.0.0.1:8080/report/getGrade?id=$select&type=1",
+                  "config": {
+                    "dataset": {
+                      "source": "$source"
+                    },
+                    "xAxis": {
+                      "type": "category",
+                      "axisTick": {
+                        "show": false
+                      }
+                    },
+                    "yAxis": {
+                    },
+                    "series": [
+                      {
+                        "type": "bar",
+                        "seriesLayoutBy": "row"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "size": "xs",
+              "style": {
+                "position": "static",
+                "display": "block",
+                "flex": "1 1 auto",
+                "flexGrow": 1,
+                "flexBasis": "auto"
+              },
+              "wrapperBody": false,
+              "isFixedHeight": false,
+              "isFixedWidth": false
+
+            },
+            {
+              "type": "service",
+              "id": "chart2",
+              "body": [
+                {
+                  "type": "chart",
+                  "api": "POST:http://127.0.0.1:8080/report/getGrade?id=$select&type=2",
+                  "config": {
+                    "dataset": {
+                      "source": "$source"
+                    },
+                    "xAxis": {
+                      "type": "category",
+                      "axisTick": {
+                        "show": false
+                      }
+                    },
+                    "yAxis": {
+                    },
+                    "series": [
+                      {
+                        "type": "line",
+                        "seriesLayoutBy": "row"
+                      },
+                      {
+                        "type": "line",
+                        "seriesLayoutBy": "row"
+                      }
+                    ]
+                  }
+
+                }
+              ],
+              "size": "xs",
+              "style": {
+                "position": "static",
+                "display": "block",
+                "flex": "1 1 auto",
+                "flexGrow": 1,
+                "flexBasis": "auto"
+              },
+              "wrapperBody": false,
+              "isFixedHeight": false,
+              "isFixedWidth": false
+            }
+          ],
+          "style": {
+            "position": "relative"
+          }
+        }
+      ]
+    },
+    {
+      "type": "flex",
+      "className": "p-1",
+      "items": [
+      ],
+      "style": {
+        "position": "relative"
+      }
+    },
+    {
+      "type": "service",
+      "id" : "download",
+      "api": "POST:http://127.0.0.1:8080/report/download?id=$select",
+      "body": {
+        "label": "测试报告下载",
+        "type": "button",
+        "level": "success",
+        "actionType": "url",
+        "url": "$source",
+        "blank": true
+      }
+    }
+
+  ],
+  "hidden": false,
+  "header": "测试报告查看",
+  "collapsable": true,
+  "headerPosition": "top",
+  "disabled": false,
+  "asideResizor": false,
+  "style": {
+    "boxShadow": " 0px 0px 0px 0px transparent"
+  },
+  "pullRefresh": {
+    "disabled": true
+  }
+}
