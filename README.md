@@ -25,8 +25,8 @@ This system is a test system for the collaborative perception model of the Inter
   + The database environment is mysql 8.0.32
 
 + Other software and dependencies
-  CUDA11.4 、Pytorch1.110+cu113 Spring Boot2.0 JDK1.7.0
-  Cmake 3.26.1 Spconv 1.2.1 PCL1.9.1
+  CUDA11.4 、Pytorch1.110+cu113 、Spring Boot2.0 、JDK1.7.0、
+  Cmake 3.26.1 、Spconv 1.2.1 、PCL1.9.1
   
 
 
