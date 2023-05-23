@@ -5,8 +5,8 @@ This system is a test system for the collaborative perception model of the Inter
 
 ## Repository Structure
 
+  + the `client` folder saves web engineering codes
   + the `server` folder saves server code，Various businesses can be implemented through server codes
-  + the `amis-admin-master` folder saves web engineering codes
   + the `test_pcl` folder saves codes related to point cloud data amplification
   + the `opencood` folder saves files and codes related to the collaborative perception model
  
