@@ -1,9 +1,55 @@
 # Test-System-for-Collaborative-Perception
-车联网协同感知测试系统
-amis-admin-master 是前端工程代码，进入工程目录，使用npm start可以直接启动前端工程。(使用之前需要先使用npm install安装组件，然后使用npm start启动前端工程)
 
-server是后端代码，启动前端代码之前，需要先启动后台程序，否则前端无法请求到数据，也无法执行业务。
+This system is a test system for the collaborative perception model of the Internet of Vehicles. The system amplifies the point cloud data to make it have extreme weather characteristics such as rain, snow, fog, etc., and then uses it as a test case to test the prediction ability of the Internet of Vehicles collaborative perception model under extreme weather conditions.
 
-test_pcl师数据扩增代码，使用之前需要先通过Cmakelists对程序代码进行编译。server后台会自动调用test_pcl的编译结果。
 
-最后安装opencood框架，安装教程参考 https://opencood.readthedocs.io/en/latest/md_files/installation.html 网站。安装完毕后会生成opencood文件夹。server会自动调用该文件夹中的模型进行模型检测。
+## Repository Structure
+
+  + the `server` folder saves server code，Various businesses can be implemented through server codes
+  + the `amis-admin-master` folder saves web engineering codes
+  + the `test_pcl` folder saves codes related to point cloud data amplification
+  + the `opencood` folder saves files and codes related to the collaborative perception model
+ 
+  + README.md
+
+
+## Environment
+
++ Ubuntu Env
+  + The ubuntu environment is ubuntu 18.04
+
++ Python Env
+  + The version of the python environment is Python3.7.11
+
++ Mysql Env
+  + The database environment is mysql 8.0.32
+
++ Other software and dependencies
+  CUDA11.4 Pytorch1.110+cu113 Spring Boot2.0 JDK1.7.0
+  Cmake 3.26.1 Spconv 1.2.1 PCL1.9.1
+  
+
+
+
+## Code Usage
+
+Before using the system, you need to install the opencood framework, the installation tutorial is shown in the website link
+
+https://opencood.readthedocs.io/en/latest/md_files/installation.html
+
+After the installation is complete, add or replace the opencood files in this project to the generated opencood folder
+
+The download address of the dataset and other models is
+
+https://mobility-lab.seas.ucla.edu/opv2v/
+
+After installing the opencood framework, you need to install the pcl library. The installation tutorial link is as follows
+
+https://blog.csdn.net/qq_42257666/article/details/124574029
+
+After pcl is installed, you need to start the background program server first. Use IntelliJ IDEA to open the project code, first download the maven dependencies, and then start the program directly
+
+After the server startup is complete, enter the front-end project directory, use the `npm install` command related dependencies, and then use `npm start` to start the front-end server, open the browser and enter the given URL
+
+After that, we can use the test system to test the collaborative perception model
+
